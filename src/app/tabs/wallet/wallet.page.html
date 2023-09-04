@@ -1,0 +1,49 @@
+<ion-header class="ion-no-border">
+
+  <ion-toolbar color="primary">
+  </ion-toolbar>
+  <ion-list lines="none">
+    <ion-item color="primary">
+      <ion-label class="ion-text-center" color="white">JOKAR WALLET</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div class="popover">
+    <ion-item lines="none">
+      <ion-label>
+        <ion-text color="dark">Total</ion-text>
+        <p><ion-text color="primary">₹500.00</ion-text></p>
+      </ion-label>
+      <ion-icon slot="end" name="add-circle" color="primary"></ion-icon>
+    </ion-item>
+  </div>
+  
+</ion-header>
+
+<ion-content color="light">
+
+  <ion-list lines="none" class="ion-margin-vertical">
+    <ion-list-header mode="md">TRANSACTION HISTORY</ion-list-header>
+    <ion-item *ngFor="let item of transactions">
+      <ion-label>
+        <ion-text>{{item?.purpose}}</ion-text>
+        <p *ngIf="item?.transaction_id" class="tmargin">
+          <ion-text>
+            ID: {{item?.transaction_id}}
+          </ion-text>
+        </p>
+        <p [class]="!item?.transaction_id ? 'tmargin' : ''">
+          <ion-text>
+            {{item?.date | date: 'MMM d, y'}}
+          </ion-text>
+        </p>
+      </ion-label>
+      <ion-text 
+        slot="end" 
+        [color]="item?.amount_added ? 'primary' : 'danger'">
+        {{item?.amount_added ? '+ ' : '- '}} ₹<span>{{item?.amount | number: '0.2-2'}}</span>
+      </ion-text>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

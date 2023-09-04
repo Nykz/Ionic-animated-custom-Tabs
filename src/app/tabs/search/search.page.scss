@@ -1,0 +1,34 @@
+.ios {
+    ion-searchbar {
+        margin-top: 1rem;
+    }
+}
+
+ion-content {
+    ion-list {
+        ion-item {
+            letter-spacing: 0.5px;
+            ion-thumbnail {
+                width: 12vh;
+                height: 12vh;
+            }
+            ion-label {
+                font-size: 1rem;
+                font-weight: bold;
+                ion-text {
+                    margin-bottom: 0.3vh;
+                }
+                p {
+                    padding-top: 0.1vh;
+                    font-weight: 450;
+                    font-size: 0.8rem;
+                    color: gray;
+                    ion-icon {
+                        font-size: 1.8vh;
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+    }
+}

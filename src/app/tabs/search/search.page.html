@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="white">
+    <ion-searchbar
+      [animated]="true"
+      debounce="800"
+      #searchInput
+      placeholder="Search for items, stores..."
+      (ionInput)="onSearchChange($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <app-empty-screen 
+    *ngIf="shops?.length == 0"
+    [title]="'Sorry! No Record Found'" 
+    [image]="'assets/imgs/shop.png'">
+  </app-empty-screen>
+
+  <ng-container *ngIf="shops.length > 0">
+    <ion-list lines="none">
+      <ion-item *ngFor="let store of shops" class="ion-margin-top">
+        <ion-thumbnail slot="start">
+          <img [src]="'assets/imgs/' + store?.img"/>
+        </ion-thumbnail>
+        <ion-label>
+          <ion-text>{{ store?.name }}</ion-text>
+          <p *ngIf="store?.categories">
+            <ion-text>
+              {{getCategories(store?.categories)}}
+            </ion-text>
+          </p>
+          <p>
+            <ion-text>
+              {{store?.location}}
+            </ion-text>
+          </p>
+          <p>
+            <ion-text>
+              <ion-icon name="time"></ion-icon> {{store?.delivery_time}} MINS
+            </ion-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+
+</ion-content>
